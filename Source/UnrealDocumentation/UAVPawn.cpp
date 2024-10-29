@@ -30,14 +30,14 @@ AUAVPawn::AUAVPawn()
     FloatingMovement->UpdatedComponent = RootComponent;
 
     // Load default black and white material
-    static ConstructorHelpers::FObjectFinder<UMaterial> BWMaterial(TEXT("/Game/Materials/M_BlackAndWhite"));
+    static ConstructorHelpers::FObjectFinder<UMaterial> BWMaterial(TEXT("/Game/Materials/CameraMaterials/M_BlackAndWhite"));
     if (BWMaterial.Succeeded())
     {
         BlackAndWhiteMaterial = BWMaterial.Object;
     }
 
     // Load default thermal material
-    static ConstructorHelpers::FObjectFinder<UMaterial> ThermalMat(TEXT("/Game/Materials/M_Thermal"));
+    static ConstructorHelpers::FObjectFinder<UMaterial> ThermalMat(TEXT("/Game/Materials/CameraMaterials/M_Thermal"));
     if (ThermalMat.Succeeded())
     {
         ThermalMaterial = ThermalMat.Object;
