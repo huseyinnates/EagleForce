@@ -14,11 +14,13 @@ AUAVPawn::AUAVPawn()
 	PostProcessComponent->SetupAttachment(RootComponent);
 
 	// Varsayılan siyah beyaz materyalini yükle
-	static ConstructorHelpers::FObjectFinder<UMaterial> Material(TEXT("/Game/Materials/CameraMaterials/BlackAndWhiteRenderMaterial"));
+	//static ConstructorHelpers::FObjectFinder<UMaterial> Material(TEXT("/Game/Materials/CameraMaterials/BlackAndWhiteRenderMaterial"));
+	static ConstructorHelpers::FObjectFinder<UMaterial> Material(TEXT("/Game/Materials/CameraMaterials/Material"));
+
 	if (Material.Succeeded())
 	{
-		BlackAndWhiteMaterial = Material.Object;
-		PostProcessComponent->AddOrUpdateBlendable(BlackAndWhiteMaterial);
+		ThermalMaterial = Material.Object;
+		PostProcessComponent->AddOrUpdateBlendable(ThermalMaterial);
 	}
 }
 

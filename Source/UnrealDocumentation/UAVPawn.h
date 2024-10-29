@@ -28,6 +28,8 @@ public:
 	//Black and white material
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PostProcess")
 	UMaterialInterface* BlackAndWhiteMaterial;
+	UMaterialInterface* ThermalMaterial;
+	
 	//Render black and white
 	void RenderBlackAndWhite();
 
