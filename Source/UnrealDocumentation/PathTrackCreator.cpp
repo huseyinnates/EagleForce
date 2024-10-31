@@ -14,14 +14,13 @@ APathTrackCreator::APathTrackCreator()
 }
 APathTrackCreator::~APathTrackCreator()
 {
-	SaveDataTableToCSV(RecorderDataTable);
 }
 
 void APathTrackCreator::SaveDataTableToCSV(UDataTable* DataTable)
 {
     if (DataTable == nullptr)
     {
-        UE_LOG(LogTemp, Warning, TEXT("DataTable boş."));
+        UE_LOG(LogTemp, Warning, TEXT("DataTable is empty."));
         return;
     }
      
@@ -68,7 +67,7 @@ void APathTrackCreator::SaveDataTableToCSV(UDataTable* DataTable)
     }
      
     FString DirectoryPath = FPaths::ProjectSavedDir() / TEXT("TrackerData/");
-    FString FilePath = DirectoryPath / TEXT("YourDataTable.csv");
+    FString FilePath = DirectoryPath / TEXT("InitialTestDataTable.csv");
      
     IPlatformFile& PlatformFile = FPlatformFileManager::Get().GetPlatformFile();
     if (!PlatformFile.DirectoryExists(*DirectoryPath))
@@ -78,19 +77,17 @@ void APathTrackCreator::SaveDataTableToCSV(UDataTable* DataTable)
      
     if (FFileHelper::SaveStringToFile(CSVString, *FilePath))
     {
-        UE_LOG(LogTemp, Log, TEXT("DataTable başarıyla kaydedildi: %s"), *FilePath);
+        UE_LOG(LogTemp, Log, TEXT("DataTablesaved  %s"), *FilePath);
     }
     else
     {
-        UE_LOG(LogTemp, Error, TEXT("DataTable kaydedilemedi: %s"), *FilePath);
+        UE_LOG(LogTemp, Error, TEXT("DataTable issue occured %s"), *FilePath);
     }
 }
 // Called when the game starts or when spawned
 void APathTrackCreator::BeginPlay()
 {
-	Super::BeginPlay();
-	// Add data to the data table
-	RecorderDataTable = NewObject<UDataTable>(UDataTable::StaticClass());
+	Super::BeginPlay(); 
 }
 void APathTrackCreator::AddRowToTable(double Longitude, double Latitude, double Height)
 {
@@ -102,7 +99,10 @@ void APathTrackCreator::AddRowToTable(double Longitude, double Latitude, double 
 	// Add the row to the data table
 	RecorderDataTable->AddRow(FName("Row1"), *newRow);
 }
-
+void APathTrackCreator::BPSaveDataTable()
+{
+	SaveDataTableToCSV(RecorderDataTable);
+}
 // Called every frame
 void APathTrackCreator::Tick(float DeltaTime)
 {
