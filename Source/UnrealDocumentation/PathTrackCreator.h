@@ -31,8 +31,11 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Tracker Data Table")
 	void AddRowToTable(double Longitude, double Latitude, double Height);
 	void SaveDataTableToCSV(UDataTable* DataTable);
+	UPROPERTY(EditAnywhere, Category = "Tracker Data Table")
+	FString FileName = "FlightData.csv";
 	UFUNCTION(BlueprintCallable, Category = "Tracker Data Table")
 	void BPSaveDataTable();
+	long int Counter = 0;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

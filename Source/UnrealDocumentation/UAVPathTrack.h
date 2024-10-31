@@ -31,6 +31,28 @@ public:
 	double Height;
 };
 
+USTRUCT(BlueprintType)
+struct FPathTrackerDataTable : public FTableRowBase
+{
+	GENERATED_USTRUCT_BODY()
+
+public:
+	FPathTrackerDataTable()
+		: id(0)
+		, Longitude(0.0)
+		, Latitude(0.0)
+		, Height(0.0)
+		
+	{}
+	UPROPERTY(EditAnywhere, Category = "FlightTracker")
+	int id;
+	UPROPERTY(EditAnywhere, Category = "FlightTracker")
+	double Longitude;
+	UPROPERTY(EditAnywhere, Category = "FlightTracker")
+	double Latitude;
+	UPROPERTY(EditAnywhere, Category = "FlightTracker")
+	double Height;
+};
 UCLASS()
 class UNREALDOCUMENTATION_API AUAVPathTrack : public AActor
 {

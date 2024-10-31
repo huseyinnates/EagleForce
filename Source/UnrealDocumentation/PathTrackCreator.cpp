@@ -66,7 +66,7 @@ void APathTrackCreator::SaveDataTableToCSV(UDataTable* DataTable)
         CSVString.AppendChar('\n');
     }
      
-    FString DirectoryPath = FPaths::ProjectSavedDir() / TEXT("TrackerData/");
+    FString DirectoryPath = FPaths::ProjectSavedDir() / FileName;
     FString FilePath = DirectoryPath / TEXT("InitialTestDataTable.csv");
      
     IPlatformFile& PlatformFile = FPlatformFileManager::Get().GetPlatformFile();
@@ -97,7 +97,10 @@ void APathTrackCreator::AddRowToTable(double Longitude, double Latitude, double 
 	newRow->Latitude = Latitude;
 	newRow->Height = Height;
 	// Add the row to the data table
-	RecorderDataTable->AddRow(FName("Row1"), *newRow);
+	//Each time increase the row name by 1
+	FString RowName = FString::FromInt(Counter);
+	RecorderDataTable->AddRow(FName(*RowName), *newRow);
+	Counter++; 
 }
 void APathTrackCreator::BPSaveDataTable()
 {
