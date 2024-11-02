@@ -8,7 +8,7 @@ public class UnrealDocumentation : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "CesiumRuntime", "JSBSimFlightDynamicsModel" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "CesiumRuntime", "JSBSimFlightDynamicsModel", "GeoReferencing" });
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 
