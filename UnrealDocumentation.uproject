@@ -32,6 +32,10 @@
 				"Android",
 				"IOS"
 			]
+		},
+		{
+			"Name": "GeoReferencing",
+			"Enabled": true
 		}
 	]
 }
