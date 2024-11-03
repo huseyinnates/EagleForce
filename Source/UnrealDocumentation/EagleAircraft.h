@@ -36,6 +36,11 @@ public:
 	TObjectPtr<UJSBSimMovementComponent> JSBSimMovementComponent;
 
 	void RotateCamera(float AxisValue);
+	void ThrottleUp();
+	void ThrottleDown();
+	void Elevator(float AxisValue);
+	void Aileron(float AxisValue);
+	void Rudder(float AxisValue);
 
 
 protected:
